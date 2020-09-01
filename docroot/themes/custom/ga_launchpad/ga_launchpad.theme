@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * PARAGRAPH PRE-PROCESS
+ *
+ * @param $variables
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ */
+
+function ga_launchpad_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Paragraph 'View'
+  if ($paragraph->getType() == 'view') {
+
+    if (isset($paragraph->field_view->target_id)) {
+      // Load term.
+      $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($paragraph->field_view->target_id);
+
+      $variables['paragraph_view_machine_name'] =  $term->get('field_machine_name')->value;
+      $variables['paragraph_view_display_block'] =  $term->get('field_display_block')->value;
+    }
+  }
+}
+
+function ga_launchpad_css_alter(&$css) {
+  $defaultThemeName = \Drupal::config('system.theme')->get('default');
+  $themeHandler = \Drupal::service('theme_handler');
+  $baseTheme = $themeHandler->getTheme($defaultThemeName)->base_theme;
+
+  if($baseTheme=="ga_launchpad"){
+    unset($css[drupal_get_path('theme','ga_launchpad').'/node_modules/bootstrap/dist/css/bootstrap.min.css']);
+  }
+}

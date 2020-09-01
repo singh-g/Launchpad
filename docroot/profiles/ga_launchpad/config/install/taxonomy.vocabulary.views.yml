@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Views
+vid: views
+description: 'Predefined list of views that can be added to paragraphs'
+weight: 0

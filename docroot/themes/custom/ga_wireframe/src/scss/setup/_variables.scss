@@ -1,0 +1,63 @@
+// Site specific Vars here
+
+// Breakpoints
+$grid-breakpoints: () !default;
+$grid-breakpoints: map-merge(
+  $grid-breakpoints,
+  (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1550px
+  )
+);
+
+// Width
+$max-width: 1440px;
+
+// Fonts
+$font--title: 'Times New Roman', 'Times', serif;
+$font--body: 'Helvetica', 'Arial', sans-serif;
+
+// Colors - site specific declaration
+$site-colors: (
+  brand: (
+    // beige: #fff4e5, // For reference
+  ),
+  gray: (
+    70: #b2b2b3,
+    85: #d8d9d9,
+    93: #ededed,
+    95: #f2f2f2,
+    97: #f7f7f7
+  )
+);
+$colors: () !default;
+$colors: map-merge($colors, $site-colors);
+
+// z-indexes
+/*
+You can add as many as you like - 
+this makes it easier to see what numbers are being used,
+rather than having arbituary numbers throughout the scss
+*/
+$zIndex-1: 1;
+$zIndex-5: 5;
+$zIndex-10: 10;
+$zIndex-15: 15;
+$zIndex-20: 20;
+
+//  This initiates GA SASS specific mixins requirements
+@include ga--init();
+
+//  The following entries define default font sizes.
+//  - args: name, desktop font-size, tablet font-size, mobile font-size, line-height
+@include index-responsive-font('h1', 70px, 40px, 40px, 1.14); // h1
+@include index-responsive-font('h2', 48px, 32px, 32px, 1.33); // h2
+@include index-responsive-font('h3', 28px, 22px, 22px, 1.29); // h3
+@include index-responsive-font('h4', 22px, 20px, 20px, 1.36); // h4
+@include index-responsive-font('h5', 24px, 18px, 18px, 1.33); // h5
+@include index-responsive-font('h6', 12px, 12px, 12px, 1.33); // h6
+@include index-responsive-font('copy', 18px, 16px, 16px, 1.89); // copy/p/body

@@ -1,0 +1,36 @@
+form {
+  padding-top: 46px;
+
+  .form-item {
+    margin-bottom: 40px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  input {
+    margin-top: 0;
+    height: 58px;
+    border: 1px solid color(gray, 70);
+    border-radius: 5px;
+  }
+
+  .js-form-type-checkbox {
+    .form-checkbox {
+      height: auto;
+      margin-right: 10px;
+    }
+
+    label {
+      display: inline-block;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  form {
+    padding-top: 65px;
+  }
+}

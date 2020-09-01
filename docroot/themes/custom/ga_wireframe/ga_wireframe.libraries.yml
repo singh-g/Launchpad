@@ -1,0 +1,12 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      dist/css/style.css: {}
+  deprecated: The "%library_id%" asset library is deprecated in drupal:8.8.0 and is removed from drupal:9.0.0. See https://www.drupal.org/project/drupal/issues/2349711
+
+  js:
+    dist/js/theme.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

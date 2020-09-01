@@ -1,0 +1,26 @@
+name: GA Wireframe
+type: theme
+description: 'Theme to customise website specifically per project - expanded on from GA Launchpad.'
+package: G-A
+version: VERSION
+core: 8.x
+base theme: ga_launchpad
+
+regions:
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  before_footer: 'Before Footer'
+  footer: 'Footer'
+  after_footer: 'After Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'ga_wireframe/global-styling'
+

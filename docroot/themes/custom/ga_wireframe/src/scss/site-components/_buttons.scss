@@ -1,0 +1,147 @@
+.button__wrapper,
+button {
+  display: inline-block;
+
+  a {
+    background-color: white;
+    color: black;
+    padding: 12px 98px 10px 28px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    position: relative;
+    transition: ease-in-out 300ms all;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      background-color: white;
+      text-decoration: none;
+      color: black;
+    }
+
+    &:after {
+      content: '';
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('../assets/images/icons/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.btn {
+  &-light {
+    position: relative;
+    background-color: transparent;
+    border-color: transparent;
+    border: none;
+    padding: 0 98px 0 0;
+    color: black;
+    letter-spacing: 1.6px;
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+      text-decoration: none;
+      color: black;
+      border: none;
+
+      &:after {
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &:focus {
+      background-color: transparent;
+      color: black;
+    }
+
+    &:after {
+      content: '';
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('../assets/images/icons/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: right ease-in-out 300ms;
+    }
+  }
+}
+
+form {
+  .form__submit {
+    position: relative;
+    max-width: 391px;
+
+    &:after {
+      content: '';
+      height: 36px;
+      width: 36px;
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('../assets/images/icons/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .form-submit {
+    background-color: color(gray, 70);
+    color: black;
+    padding: 12px 98px 10px 28px;
+    margin-top: 40px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+    position: relative;
+    border: none;
+    transition: ease-in-out 300ms all;
+    text-decoration: none;
+    border-radius: 0;
+    width: 100%;
+
+    &:hover,
+    &:active {
+      background-color: color(gray, 85);
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .button__wrapper {
+    a {
+      padding: 14px 98px 12px 28px;
+    }
+  }
+
+  form {
+    .form-submit {
+      padding: 14px 98px 12px 28px;
+      margin-top: 72px;
+    }
+  }
+}

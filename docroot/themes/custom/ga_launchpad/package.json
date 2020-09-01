@@ -1,0 +1,11 @@
+{
+  "name": "ga_launchpad",
+  "version": "1.0.0",
+  "description": "Master theme for the ga launchpad website",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.1",
+    "slick-carousel": "^1.8.1"
+  }
+}

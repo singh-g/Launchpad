@@ -1,0 +1,27 @@
+.l-header {
+  padding: 27px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: $max-width;
+  transition: ease-in-out 300ms background-color, ease-in-out 300ms padding;
+  z-index: $zIndex-20;
+
+  &.isFixed {
+    background-color: color(gray, 70);
+    padding: 10px 0;
+  }
+
+  // &.menuOpen {
+  //   background-color: transparent;
+
+  //   #block-ga-wireframe-branding {
+  //     position: absolute;
+  //     z-index: $zIndex-10;
+  //   }
+  // }
+
+  #block-ga-wireframe-branding {
+    width: 190px;
+  }
+}

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: four_columns_content
+label: 'Four columns content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

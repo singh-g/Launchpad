@@ -1,0 +1,20 @@
+.toolbar-fixed,
+.login__page {
+  .l-header,
+  &.l-header {
+    position: relative;
+    background-color: color(gray, 70);
+
+    &.isFixed {
+      position: fixed;
+    }
+  }
+}
+
+.toolbar-fixed {
+  .l-header {
+    &.isFixed {
+      top: 79px;
+    }
+  }
+}

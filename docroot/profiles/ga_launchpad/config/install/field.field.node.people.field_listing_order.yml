@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_order
+    - node.type.people
+id: node.people.field_listing_order
+field_name: field_listing_order
+entity_type: node
+bundle: people
+label: 'Listing order'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: weight
+field_type: integer

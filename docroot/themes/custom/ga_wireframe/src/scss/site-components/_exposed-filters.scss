@@ -1,0 +1,129 @@
+.bef-exposed-form {
+  padding-top: 0;
+  margin: 0 -15px;
+
+  .form__submit {
+    display: none;
+  }
+
+  .form-item {
+    background-color: color(gray, 97);
+    border: 1px solid color(gray, 85);
+    padding: 25px;
+
+    label {
+      text-align: center;
+      position: relative;
+      width: 130px;
+      margin: 0 auto;
+      font-size: 16px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        background-image: url('../assets/images/icons/chevron-up.svg');
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+        width: 23px;
+        height: 23px;
+      }
+    }
+
+    &.js-show-filter {
+      label {
+        &:after {
+          content: '';
+          transform: translateY(-50%) rotate(0);
+        }
+      }
+
+      ul {
+        display: block;
+      }
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 0;
+      display: none;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          color: black;
+          padding-bottom: 3px;
+          transition: border-bottom ease-in-out 300ms;
+
+          &:hover,
+          &:active,
+          &.bef-link--selected {
+            text-decoration: underline;
+          }
+        }
+
+        &:last-child {
+          padding-right: 0;
+          margin-right: 0;
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .bef-exposed-form {
+    margin: 0 auto;
+
+    .form-item {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 38px 56px;
+
+      label {
+        text-align: left;
+        width: auto;
+        font-size: 18px;
+        margin: 0;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      ul {
+        display: block;
+
+        li {
+          display: inline-block;
+          padding-right: 32px;
+          margin-right: 32px;
+          border-right: 1px solid color(gray, 85);
+          margin-bottom: 0;
+
+          a {
+            color: black;
+            padding-bottom: 3px;
+            transition: border-bottom ease-in-out 300ms;
+
+            &:hover,
+            &:active,
+            &.bef-link--selected {
+              text-decoration: none;
+            }
+          }
+
+          &:last-child {
+            padding-right: 0;
+            margin-right: 0;
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}

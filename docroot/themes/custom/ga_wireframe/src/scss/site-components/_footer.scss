@@ -1,0 +1,50 @@
+footer {
+  background-color: color(gray, 70);
+  color: white;
+  padding: 26px 0 50px;
+
+  a {
+    color: white;
+
+    &:hover,
+    &:active {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  hr {
+    width: 100%;
+    border-color: white;
+    opacity: 0.3;
+  }
+}
+
+.footer {
+  &__copyright {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    padding-bottom: 36px;
+    width: 144px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  footer {
+    padding: 87px 160px 98px;
+
+    hr {
+      display: none;
+    }
+  }
+
+  .footer {
+    &__logo {
+      width: 174px;
+    }
+  }
+}

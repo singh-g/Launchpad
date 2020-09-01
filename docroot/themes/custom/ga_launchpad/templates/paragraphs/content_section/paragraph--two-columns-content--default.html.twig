@@ -1,0 +1,142 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  'content-section',
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+
+{% set layout = content.field_layout_two_columns|render|striptags|trim %}
+{% if layout == "sixty-six-thirty-three" %}
+  {# 66:33|sixty-six-thirty-three #}
+  {%
+    set col_class_by_col_no = {
+      '1' : 'col-md-9',
+      '2' : 'col-md-3'
+    }
+  %}
+{% elseif layout == "thirty-three-sixty-six" %}
+  {# 33:66|thirty-three-sixty-six #}
+  {%
+    set col_class_by_col_no = {
+      '1' : 'col-md-3',
+      '2' : 'col-md-9'
+    }
+  %}
+{% else %}
+  {# 50:50|fifty-fifty - default #}
+  {%
+    set col_class_by_col_no = {
+      '1' : 'col-md-6',
+      '2' : 'col-md-6'
+    }
+  %}
+{% endif %}
+
+{% set all_row_items = [] %}
+{% for key, value in content.field_add_two_columns %}
+  {% if key matches '/^\\d+$/' %}
+    {% set all_row_items = all_row_items|merge([value]) %}
+  {% endif %}
+{% endfor %}
+
+{# Field: field_heading_style #}
+{% set heading_style = content.field_heading_style|render|striptags|trim %}
+{% if heading_style == "H1" %}
+  {% set heading = "h1" %}
+{% elseif heading_style == "H2" %}
+  {% set heading = "h2" %}
+{% elseif heading_style == "H3" %}
+  {% set heading = "h3" %}
+{% elseif heading_style == "H4" %}
+  {% set heading = "h4" %}
+{% elseif heading_style == "H5" %}
+  {% set heading = "h5" %}
+{% elseif heading_style == "H6" %}
+  {% set heading = "h6" %}
+{% else %}
+  {% set heading = "div" %}
+{% endif %}
+
+{% block paragraph %}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {# {{ content }} #}
+
+    {# Field: field_headline #}
+    {% set head_line %}
+      {{ content.field_headline }}
+    {% endset %}
+
+    {# Field: field_intro_text #}
+    {% set intro %}
+      {{ content.field_intro_text }}
+    {% endset %}
+
+    {# Field: field_add_two_columns #}
+    {% set add_column %}
+      {{ content.field_add_two_columns }}
+    {% endset %}
+
+    <div class="container-fluid">
+    {% if content.field_headline|render %}
+      <div class="content-section__intro">
+      <{{ heading }} class="content-section__title">
+      {{ head_line|striptags }}
+      </{{ heading }}>
+      <div class="content-section__text">
+        {{ intro }}
+      </div>
+      </div>
+    {% endif %}
+    <div class="row row-{{ layout }}">
+      {% for content_item in all_row_items %}
+        <div class="{{ col_class_by_col_no[loop.index] }} column__{{ loop.index }}">
+          {{ content_item }}
+        </div>
+      {% endfor %}
+    </div>
+    </div>
+  {% endblock %}
+  </div>
+{% endblock paragraph %}

@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * A template that prints a number of Drupal regions as well as supplying custom
+ * markup necessary for the global header navigation.
+ *
+ * This isn't a standard Drupal Twig template, it is called via include by
+ * page.html.twig.
+ */
+#}
+
+{# We can't use the standard attributes object until https://www.drupal.org/node/2818293 #}
+<div class="header {{ header_classes|join(' ') }}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        {{ page.header.ga_wireframe_branding }}
+      </div>
+      <div class="col-6">
+        <div class="hamburger__wrapper js-hamburger-wrapper">
+          {# <div class="hamburger">
+            <div class="hamburger__icon js-hamburger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="hamburger__text js-hamburger-text"><p>Menu</p></div>
+            </div>
+          </div> #}
+          <div class="overlay js-menu-overlay">
+            <nav class="primary-nav {{ primary_nav_classes|join(' ') }}">
+              {{ page.header.ga_wireframe_mainnavigation }}
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

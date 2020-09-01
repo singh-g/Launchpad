@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_add_three_columns
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.card_sets
+    - paragraphs.paragraphs_type.form
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.three_columns_content
+    - paragraphs.paragraphs_type.view
+  module:
+    - entity_reference_revisions
+id: paragraph.three_columns_content.field_add_three_columns
+field_name: field_add_three_columns
+entity_type: paragraph
+bundle: three_columns_content
+label: 'Add three columns'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      card: card
+      card_sets: card_sets
+      form: form
+      image: image
+      text: text
+      view: view
+    target_bundles_drag_drop:
+      card:
+        enabled: true
+        weight: 11
+      card_sets:
+        enabled: true
+        weight: 12
+      content_section:
+        weight: 13
+        enabled: false
+      form:
+        enabled: true
+        weight: 14
+      image:
+        enabled: true
+        weight: 15
+      text:
+        enabled: true
+        weight: 16
+      three_columns_content:
+        weight: 10
+        enabled: false
+      two_columns_content:
+        weight: 17
+        enabled: false
+      view:
+        enabled: true
+        weight: 18
+field_type: entity_reference_revisions

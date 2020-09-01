@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_layout_two_columns
+field_name: field_layout_two_columns
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '50:50'
+      label: '<img src="../../icon/50-50.png" alt="Fifty Fifty"/>'
+    -
+      value: '66:33'
+      label: '<img src="../../icon/66-33.png" alt="Sixty six Thirty three"/>'
+    -
+      value: '33:66'
+      label: '<img src="../../icon/33-66.png" alt="Thirty three Sixty six"/>'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

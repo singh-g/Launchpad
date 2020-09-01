@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_our_team
+    - field.field.node.people.body
+    - field.field.node.people.field_department
+    - field.field.node.people.field_email
+    - field.field.node.people.field_job_title
+    - field.field.node.people.field_listing_order
+    - field.field.node.people.field_phone_number
+    - field.field.node.people.field_photo
+    - node.type.people
+  module:
+    - text
+    - user
+id: node.people.teaser_our_team
+targetEntityType: node
+bundle: people
+mode: teaser_our_team
+content:
+  body:
+    type: text_default
+    weight: 2
+    region: content
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_job_title:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_photo:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+hidden:
+  field_department: true
+  field_email: true
+  field_listing_order: true
+  field_phone_number: true
+  links: true

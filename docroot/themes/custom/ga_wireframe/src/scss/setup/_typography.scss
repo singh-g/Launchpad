@@ -1,0 +1,56 @@
+body {
+  @include use-responsive-font(copy);
+  font-family: $font--body;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+  color: black;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+/* Headings & Paragraph */
+h1,
+.h1 {
+  @include use-responsive-font(h1);
+  font-family: $font--title;
+  font-weight: normal;
+}
+h2,
+.h2 {
+  @include use-responsive-font(h2);
+  font-family: $font--title;
+  font-weight: normal;
+}
+h3,
+.h3 {
+  @include use-responsive-font(h3);
+  font-family: $font--title;
+  font-weight: normal;
+}
+h4,
+.h4 {
+  @include use-responsive-font(h4);
+  font-family: $font--title;
+  font-weight: normal;
+}
+h5,
+.h5 {
+  @include use-responsive-font(h5);
+  font-family: $font--title;
+  font-weight: normal;
+}
+h6,
+.h6 {
+  @include use-responsive-font(h6);
+  font-family: $font--title;
+  font-weight: normal;
+}
+p,
+.p {
+  @include use-responsive-font(copy);
+}
+
+img {
+  width: 100%;
+  height: auto;
+}

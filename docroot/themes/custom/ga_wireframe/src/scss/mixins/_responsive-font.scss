@@ -1,0 +1,122 @@
+// Global
+@function map-set($map, $key, $value) {
+  $new: (
+    $key: $value
+  );
+  @return map-merge($map, $new);
+}
+
+// GA Specific Mixins
+$ga--map: ();
+
+// Initiates ga services
+@mixin ga--init() {
+  @include ga--init-ga-map-block('responsive-font');
+}
+
+// Creates maps inside general map
+@mixin ga--init-ga-map-block($name) {
+  $ga--map: map-set($ga--map, $name, ()) !global;
+}
+
+// Returns map block
+@function ga--get-map-block($key) {
+  @return map-get($ga--map, $key);
+}
+
+// Returns and generates a new responsive font entry map
+@function ga--new-responsive-font-entry($small, $medium, $large, $line-height) {
+  $map: (
+    small: (
+      font-size: $small,
+      line-height: $line-height
+    ),
+    medium: (
+      font-size: $medium,
+      line-height: $line-height
+    ),
+    large: (
+      font-size: $large,
+      line-height: $line-height
+    )
+  );
+  @return $map;
+}
+
+// Returns requested responsive font entry
+@function ga--get-responsive-font-entry($key) {
+  $responsive-font-block: ga--get-map-block('responsive-font');
+  @return map-get($responsive-font-block, $key);
+}
+
+// Returns breakpoint entry requested responsive font entry
+@function ga--get-responsive-font-entry-breakpoint($name, $breakpoint) {
+  $responsive-font-entry: ga--get-responsive-font-entry($name);
+  @return map-get($responsive-font-entry, $breakpoint);
+}
+
+// Prints font-size and line-height for breakpoint
+@mixin ga--print-responsive-font-breakpoint($name, $breakpoint) {
+  $breakpoint-data: ga--get-responsive-font-entry-breakpoint(
+    $name,
+    $breakpoint
+  );
+  $font-size: map-get($breakpoint-data, font-size);
+  $line-height: map-get($breakpoint-data, line-height);
+  font-size: $font-size;
+  font-size: $font-size;
+  @if ($line-height != null) {
+    line-height: $line-height;
+  }
+}
+
+// Indexes font-sizes for future use
+@mixin index-responsive-font(
+  $name,
+  $large,
+  $medium,
+  $small,
+  $line-height: null
+) {
+  $responsive-font-block: ga--get-map-block('responsive-font');
+  $new-responsive-font-entry: ga--new-responsive-font-entry(
+    $small,
+    $medium,
+    $large,
+    $line-height
+  );
+
+  $updated--responsive-font-block: map-set(
+    $responsive-font-block,
+    $name,
+    $new-responsive-font-entry
+  );
+  $ga--map: map-set(
+    $ga--map,
+    'responsive-font',
+    $updated--responsive-font-block
+  ) !global;
+}
+
+// Prints indexed font responsive css
+@mixin use-responsive-font($name) {
+  @include ga--print-responsive-font-breakpoint($name, 'small');
+  @include media-breakpoint-up('md') {
+    @include ga--print-responsive-font-breakpoint($name, 'medium');
+  }
+  @include media-breakpoint-up('lg') {
+    @include ga--print-responsive-font-breakpoint($name, 'large');
+  }
+}
+
+// Indexes for immediate use and prints font responsive css
+@mixin responsive-font($large, $medium, $small, $line-height: null) {
+  @include index-responsive-font(
+    'ga-indexing-font-once',
+    $large,
+    $medium,
+    $small,
+    $line-height
+  );
+  @include use-responsive-font('ga-indexing-font-once');
+}

@@ -1,0 +1,34 @@
+  <header role="banner" class="l-header js-header {{ node.field_page_primary_colour.entity.name.value }}">
+    {% include directory ~ '/templates/region/region--header.html.twig' %}
+  </header>
+  
+  <main role="main" class="{{ node.field_page_primary_colour.entity.name.value }} index-{{ node.field_header_style.value }}">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+      {{ page.content }}
+
+    {% if page.sidebar_first %}
+      <aside class="layout-sidebar-first" role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
+
+    {% if page.sidebar_second %}
+      <aside class="layout-sidebar-second" role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+    {% endif %}
+
+  </main>
+  {% if page.before_footer %}
+    <section role="contentinfo" class="before-footer background-{{ node.field_get_in_touch_background_co.value }}">
+      <div class="container">{{ page.before_footer }}</div>
+    </section>
+  {% endif %}
+  {% if page.footer %}
+    <footer role="contentinfo">
+      <div class="container-fluid">
+        {{ page.footer }}
+      </div>
+    </footer>
+  {% endif %}

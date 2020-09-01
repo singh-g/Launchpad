@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{%
+  set classes = [
+    'row'
+  ]
+%}
+
+{% if content %}
+  <div{{ attributes.addClass(classes) }}>
+    <div class="col-lg-3">
+      <div class="footer__logo">
+        <a href="{{ path('<front>') }}" rel="home">
+          <img src="/themes/custom/ga_wireframe/logo.svg" alt="{{ 'Home'|t }}" />
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      {{ content }}
+    </div>
+    <div class="col-lg-3">
+      <p class="footer__copyright">&copy; {{ 'now' | date('Y') }}</p>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,17 @@
+.modal {
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-dialog {
+    max-width: 1122px;
+  }
+}
+
+.modal-backdrop {
+  background-color: color(gray, 85);
+
+  &.show {
+    opacity: 0.9;
+  }
+}

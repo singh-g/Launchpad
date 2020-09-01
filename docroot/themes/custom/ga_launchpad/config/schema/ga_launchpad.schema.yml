@@ -1,0 +1,5 @@
+# Schema for the configuration files of the G-A Launchpad theme.
+
+stark.settings:
+  type: theme_settings
+  label: 'G-A Launchpad Settings'

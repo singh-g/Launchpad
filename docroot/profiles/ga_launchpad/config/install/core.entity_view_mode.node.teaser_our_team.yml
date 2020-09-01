@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_our_team
+label: 'Teaser Our team'
+targetEntityType: node
+cache: true

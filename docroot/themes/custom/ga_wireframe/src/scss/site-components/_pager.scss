@@ -1,0 +1,27 @@
+.pager {
+  &__items {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  &__item {
+    border-radius: 100%;
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+
+    a {
+      color: black;
+      padding: 0 23px;
+    }
+
+    &.is-active {
+      background-color: color(gray, 85);
+    }
+
+    &:hover {
+      background-color: color(gray, 70);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: three_columns_content
+label: 'Three columns content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

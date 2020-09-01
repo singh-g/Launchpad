@@ -1,0 +1,15 @@
+global-styling:
+  version: VERSION
+  css:
+    base:
+      node_modules/slick-carousel/slick/slick.css: {}
+      node_modules/slick-carousel/slick/slick-theme.css: {}
+      node_modules/bootstrap/dist/css/bootstrap.min.css: {}
+      css/layout.css: {}
+  deprecated: The "%library_id%" asset library is deprecated in drupal:8.8.0 and is removed from drupal:9.0.0. See https://www.drupal.org/project/drupal/issues/2349711
+  js:
+    node_modules/slick-carousel/slick/slick.min.js: {}
+    node_modules/bootstrap/dist/js/bootstrap.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

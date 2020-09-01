@@ -1,0 +1,25 @@
+name: G-A Launchpad
+type: theme
+description: 'G-A Specific theme to build simple brochure-ware websites. Based on Stark theme - An intentionally plain theme with no styling to demonstrate default Drupal’s HTML and CSS. Learn how to build a custom theme from Stark in the <a href="https://www.drupal.org/docs/8/theming">Theming Guide</a>.'
+package: G-A
+version: VERSION
+core: 8.x
+base theme: false
+
+regions:
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  before_footer: 'Before Footer'
+  footer: 'Footer'
+  after_footer: 'After Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'ga_launchpad/global-styling'

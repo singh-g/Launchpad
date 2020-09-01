@@ -1,0 +1,51 @@
+.overlay {
+  .primary-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .menu {
+      padding-left: 0;
+      list-style: none;
+
+      &__item {
+        @include use-responsive-font(h2);
+        font-family: $font--title;
+        margin-bottom: 29px;
+        text-align: center;
+
+        a {
+          color: white;
+
+          &:hover,
+          &:active {
+            text-decoration: none;
+            border-bottom: 1px solid color(gray, 85);
+          }
+
+          &.is-active {
+            border-bottom: 1px solid color(gray, 85);
+
+            &:hover,
+            &:active {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .overlay {
+    .primary-nav {
+      .menu {
+        &__item {
+          margin-bottom: 40px;
+        }
+      }
+    }
+  }
+}
